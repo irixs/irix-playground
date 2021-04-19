@@ -9,26 +9,28 @@ import SwiftUI
 
 public struct bedroomView: View {
     @Binding var step: Int
+    @Binding var tasks: Int
     
     @State var textPart = 1
     @State var animationTriangle = false
     @State var delay = false
     
-    public init( _ step: Binding<Int>) {
+    public init( _ step: Binding<Int>, _ tasks: Binding<Int>) {
             self._step = step
+            self._tasks = tasks
         }
     
     public var body: some View {
         
         ZStack{
-            //Image(image)
+            
             let img = UIImage(named: "quarto.png")
             
             Image(uiImage: img!)
                 .resizable()
                 .frame(width: 700, height: 490)
             
-            taskButton()
+            taskButton($tasks)
             
             ZStack {
                 ZStack {
@@ -44,7 +46,7 @@ public struct bedroomView: View {
                                         endPoint: UnitPoint(x: 0.5, y: 0.9999999999999999)), lineWidth: 3)
                 }
                 if(textPart == 1 && delay) {
-                    Text("Irix acabou de receber a lista de atividades no email. \nAbra a lista sempre que quiser conferir")
+                    Text("Irix just received an email with her lesson list. You can open it on the upper left corner anytime.")
                         .font(.custom("Mali Regular", size: 18))
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity, alignment: .topLeading)
                         .padding(30)
@@ -66,7 +68,7 @@ public struct bedroomView: View {
                     .padding(.trailing, 30)
                 }
                 if(textPart == 2) {
-                    Text("Vamos pro jardim fazer as atividades com irix")
+                    Text("Let's go to the garden to complete the lessons with Irix.")
                         .font(.custom("Mali Regular", size: 18))
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity, alignment: .topLeading)
                         .padding(30)
@@ -79,10 +81,10 @@ public struct bedroomView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 13)
                                 .fill(Color(#colorLiteral(red: 0.9490195512771606, green: 0.715137243270874, blue: 0.11372554302215576, alpha: 1)))
-                                .frame(width: 100, height: 30)
+                                .frame(width: 120, height: 30)
                                 .shadow(color: Color(#colorLiteral(red: 0.3294117748737335, green: 0.3294117748737335, blue: 0.3294117748737335, alpha: 0.6899999976158142)), radius: 4, x: 0, y: 3)
                             
-                            Text("go to yard")
+                            Text("go to garden")
                                 .font(.custom("Mali SemiBold", size: 15))
                                 .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                         }

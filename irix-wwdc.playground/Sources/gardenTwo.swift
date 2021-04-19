@@ -10,10 +10,12 @@ import SwiftUI
 public struct gardenTwo: View {
     
     @Binding var step: Int
+    @Binding var tasks: Int
     
-    public init( _ step: Binding<Int>) {
-        self._step = step
-    }
+    public init( _ step: Binding<Int>, _ tasks: Binding<Int>) {
+            self._step = step
+            self._tasks = tasks
+        }
     
     @State var bg = UIImage(named: "spell.png")
     
@@ -33,7 +35,8 @@ public struct gardenTwo: View {
             Image(uiImage: bg!)
                 .resizable()
                 .frame(width: 700, height: 490)
-            taskButton()
+            
+            taskButton($tasks)
             
             Image(uiImage: appleImg!)
                 .resizable()
@@ -52,10 +55,11 @@ public struct gardenTwo: View {
                                     self.draggedOffset = value.translation
                                 })
                                 .onEnded({ (value) in
-                                    if value.location.x > 250  {
+                                    if value.location.x > 520 {
                                         textPart = 4
                                         bg = UIImage(named: "spell.png")
                                         animationApple = true
+                                        tasks = 2
                                     }
                                     else {
                                         self.draggedOffset = CGSize.zero
@@ -76,7 +80,7 @@ public struct gardenTwo: View {
                                         endPoint: UnitPoint(x: 0.5, y: 0.9999999999999999)), lineWidth: 3)
                 }
                 if(textPart == 1 && delay) {
-                    Text("O proximo exercicio de casa de irix é praticar o feitiço de levitação de objetos.")
+                    Text("Irix's next homework lesson is to practice the levitation spell on objects.")
                         .font(.custom("Mali Regular", size: 18))
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity, alignment: .topLeading)
                         .padding(30)
@@ -99,7 +103,7 @@ public struct gardenTwo: View {
                     .padding(.trailing, 30)
                 }
                 if(textPart == 2 && delay) {
-                    Text("Para ajuda-la a levitar a maçã vamos fazer o movimento correto da varinha juntos!")
+                    Text("To help her levitate the apple we'll move the magic wand together!")
                         .font(.custom("Mali Regular", size: 18))
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity, alignment: .topLeading)
                         .padding(30)
@@ -123,35 +127,19 @@ public struct gardenTwo: View {
                     .padding(.trailing, 30)
                 }
                 if(textPart == 3) {
-                    Text("Arraste a varinha pelo caminho pontilhado")
+                    Text("Drag the magic wand through the dotted path")
                         .font(.custom("Mali Regular", size: 18))
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity, alignment: .topLeading)
                         .padding(30)
-                    
-                    //                    Button(action: {}, label: {
-                    //                        ZStack {
-                    //                            RoundedRectangle(cornerRadius: 13)
-                    //                                .fill(Color(#colorLiteral(red: 0.9490195512771606, green: 0.715137243270874, blue: 0.11372554302215576, alpha: 1)))
-                    //                                .frame(width: 110, height: 30)
-                    //                                .shadow(color: Color(#colorLiteral(red: 0.3294117748737335, green: 0.3294117748737335, blue: 0.3294117748737335, alpha: 0.6899999976158142)), radius: 4, x: 0, y: 3)
-                    //
-                    //                            Text("make potion")
-                    //                                .font(.custom("Mali SemiBold", size: 15))
-                    //                                .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-                    //                        }
-                    //                    }).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                    //                    .padding(.bottom, 20)
-                    //                    .padding(.trailing, 15)
-                    
                 }
                 if(textPart == 4) {
-                    Text("Parabéns! Você conseguiu ajudar irix e agora a maçã está levitando!\nSó falta mais uma atividade no dia de irix")
+                    Text("Congrats! You just helped Irix and now the apple is levitating! She has only one last lesson on her list.")
                         .font(.custom("Mali Regular", size: 18))
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity, alignment: .topLeading)
                         .padding(30)
                     
                     Button(action: {
-                        textPart = 0
+                        step = 5
                         animationTriangle = false
                         
                     }, label: {

@@ -4,11 +4,11 @@
 //
 //  Created by iris on 15/04/21.
 //
-
 import SwiftUI
 
 public struct controller: View {
-    @State var step = 4
+    @State var step = 1
+    @State var tasks = 0
     
     public init() {}
     
@@ -18,13 +18,19 @@ public struct controller: View {
             startView($step)
         }
         if(step == 2) {
-            bedroomView($step)
+            bedroomView($step, $tasks)
         }
         if(step == 3) {
-            gardenOne($step)
+            gardenOne($step, $tasks)
         }
         if(step == 4) {
-            gardenTwo($step)
+            gardenTwo($step, $tasks)
+        }
+        if(step == 5) {
+            gardenThree($step, $tasks)
+        }
+        if(step == 6) {
+            endView($step, $tasks)
         }
     }
 }

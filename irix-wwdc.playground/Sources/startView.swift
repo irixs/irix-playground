@@ -8,7 +8,6 @@
 import SwiftUI
 
 public struct startView: View {
-    
     @Binding var step: Int
     
     @State var animationSky = false
@@ -58,7 +57,7 @@ public struct startView: View {
                     
                     if(introText == 1) {
                         if(delay) {
-                            Text("Irix é uma bruxa que ainda está na escola. \nDevido a pandemia causada pela covid-19 que assolou vários reinos, incluindo o da magia que está em quarentena e regime de isolamento social, ela está tendo aulas remotas de magia e bruxaria.")
+                            Text("Irix is a witch who is still in school. Due to the pandemic caused by covid-19, that have devastated various kingdoms, including the Magic Kingdom, which is under quarantine and social isolation, she is having remote witchcraft and wizardry classes.")
                                 .font(.custom("Mali Regular", size: 15))
                                 .padding([.leading, .bottom, .trailing], 30)
                             
@@ -80,7 +79,7 @@ public struct startView: View {
                         }
                     }
                     if(introText == 2) {
-                        Text("Como muitas crianças ao redor do mundo Irix sente muita falta dos amigos e professores e anda tendo dificuldades de fazer suas tarefas de casa sozinha. Sua missão é ajudar irix com as tarefas do dia.")
+                        Text("As many kids around the world, Irix misses her classmates and is having trouble to finish homework by herself. Your mission is help Irix to finish her homework of the day.")
                             .font(.custom("Mali Regular", size: 15))
                             .padding([.leading, .bottom, .trailing], 30)
                             .onAppear(perform: executeDelay)

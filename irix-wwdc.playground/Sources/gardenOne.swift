@@ -8,17 +8,19 @@
 import SwiftUI
 
 public struct gardenOne: View {
-    
+    @Binding var tasks: Int
     @Binding var step: Int
     
-    public init( _ step: Binding<Int>) {
+    public init( _ step: Binding<Int>, _ tasks: Binding<Int>) {
             self._step = step
+            self._tasks = tasks
         }
     
     @State var bg = UIImage(named: "pocao1.png")
     @State var textPart = 1
     @State var animationTriangle = false
     @State var delay = false
+    @State var buttomShow = false
     
     @State var leaf = false
     @State var seeds = false
@@ -35,31 +37,32 @@ public struct gardenOne: View {
     var mushroomImg = UIImage(named: "mushroombuttom.png")
     
     public var body: some View {
-        //aqui vai ser a atividade de poção
         ZStack{
             
             Image(uiImage: bg!)
                 .resizable()
                 .frame(width: 700, height: 490)
-            taskButton()
+            
+            taskButton($tasks)
             
             if(textPart == 2) {
                 ZStack{
                     Button(action: {
                         leaf.toggle()
+                        buttomShow = true
                         
                     }, label: {
-                        if(leaf){
-                            Image(uiImage: leafImg!)
-                                .resizable()
-                                .frame(width: 69.3, height: 65.1)
-                        }
                         if(!leaf){
                             Image(uiImage: leafImg!)
                                 .resizable()
                                 .frame(width: 69.3, height: 65.1)
+                        }
+                        if(leaf){
+                            Image(uiImage: leafImg!)
+                                .resizable()
+                                .frame(width: 69.3, height: 65.1)
                                 .overlay(RoundedRectangle(cornerRadius: 14)
-                                            .fill(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 0.3999755051))))
+                                            .fill(Color(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 0.5))))
                         }
                         
                     }).frame(width: 69.3, height: 65.1)
@@ -67,18 +70,20 @@ public struct gardenOne: View {
                     
                     Button(action: {
                         seeds.toggle()
+                        buttomShow = true
+                        
                     }, label: {
-                        if(seeds){
-                            Image(uiImage: seedsImg!)
-                                .resizable()
-                                .frame(width: 69.3, height: 65.1)
-                        }
                         if(!seeds){
                             Image(uiImage: seedsImg!)
                                 .resizable()
                                 .frame(width: 69.3, height: 65.1)
+                        }
+                        if(seeds){
+                            Image(uiImage: seedsImg!)
+                                .resizable()
+                                .frame(width: 69.3, height: 65.1)
                                 .overlay(RoundedRectangle(cornerRadius: 14)
-                                            .fill(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 0.3999755051))))
+                                            .fill(Color(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 0.5))))
                         }
                         
                     }).frame(width: 69.3, height: 65.1)
@@ -86,18 +91,20 @@ public struct gardenOne: View {
                     
                     Button(action: {
                         humus.toggle()
+                        buttomShow = true
+                        
                     }, label: {
-                        if(humus){
-                            Image(uiImage: humusImg!)
-                                .resizable()
-                                .frame(width: 69.3, height: 65.1)
-                        }
                         if(!humus){
                             Image(uiImage: humusImg!)
                                 .resizable()
                                 .frame(width: 69.3, height: 65.1)
+                        }
+                        if(humus){
+                            Image(uiImage: humusImg!)
+                                .resizable()
+                                .frame(width: 69.3, height: 65.1)
                                 .overlay(RoundedRectangle(cornerRadius: 14)
-                                            .fill(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 0.3999755051))))
+                                            .fill(Color(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 0.5))))
                         }
                         
                     }).frame(width: 69.3, height: 65.1)
@@ -105,18 +112,20 @@ public struct gardenOne: View {
                     
                     Button(action: {
                         crystal.toggle()
+                        buttomShow = true
+                        
                     }, label: {
-                        if(crystal){
-                            Image(uiImage: crystalImg!)
-                                .resizable()
-                                .frame(width: 69.3, height: 65.1)
-                        }
                         if(!crystal){
                             Image(uiImage: crystalImg!)
                                 .resizable()
                                 .frame(width: 69.3, height: 65.1)
+                        }
+                        if(crystal){
+                            Image(uiImage: crystalImg!)
+                                .resizable()
+                                .frame(width: 69.3, height: 65.1)
                                 .overlay(RoundedRectangle(cornerRadius: 14)
-                                            .fill(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 0.3999755051))))
+                                            .fill(Color(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 0.5))))
                         }
                         
                     }).frame(width: 69.3, height: 65.1)
@@ -124,18 +133,20 @@ public struct gardenOne: View {
                     
                     Button(action: {
                         slipper.toggle()
+                        buttomShow = true
+                        
                     }, label: {
-                        if(slipper){
-                            Image(uiImage: slipperImg!)
-                                .resizable()
-                                .frame(width: 69.3, height: 65.1)
-                        }
                         if(!slipper){
                             Image(uiImage: slipperImg!)
                                 .resizable()
                                 .frame(width: 69.3, height: 65.1)
+                        }
+                        if(slipper){
+                            Image(uiImage: slipperImg!)
+                                .resizable()
+                                .frame(width: 69.3, height: 65.1)
                                 .overlay(RoundedRectangle(cornerRadius: 14)
-                                            .fill(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 0.3999755051))))
+                                            .fill(Color(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 0.5))))
                         }
                         
                     }).frame(width: 69.3, height: 65.1)
@@ -143,18 +154,20 @@ public struct gardenOne: View {
                     
                     Button(action: {
                         mushroom.toggle()
+                        buttomShow = true
+                        
                     }, label: {
-                        if(mushroom){
-                            Image(uiImage: mushroomImg!)
-                                .resizable()
-                                .frame(width: 69.3, height: 65.1)
-                        }
                         if(!mushroom){
                             Image(uiImage: mushroomImg!)
                                 .resizable()
                                 .frame(width: 69.3, height: 65.1)
+                        }
+                        if(mushroom){
+                            Image(uiImage: mushroomImg!)
+                                .resizable()
+                                .frame(width: 69.3, height: 65.1)
                                 .overlay(RoundedRectangle(cornerRadius: 14)
-                                            .fill(Color(#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 0.3999755051))))
+                                            .fill(Color(#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 0.5))))
                         }
                         
                     }).frame(width: 69.3, height: 65.1)
@@ -177,7 +190,7 @@ public struct gardenOne: View {
                                         endPoint: UnitPoint(x: 0.5, y: 0.9999999999999999)), lineWidth: 3)
                 }
                 if(textPart == 1 && delay) {
-                    Text("Para a atividade de botânica irix precisa fazer uma \npoção que ajuda a planta a se desenvolver instantaneamente")
+                    Text("For the botany lesson Irix needs to prepare a potion that helps the plant to grow instantly.")
                         .font(.custom("Mali Regular", size: 18))
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity, alignment: .topLeading)
                         .padding(30)
@@ -200,40 +213,44 @@ public struct gardenOne: View {
                     .padding(.trailing, 30)
                 }
                 if(textPart == 2) {
-                    Text("Para ajudar irix a terminar a poção selecione apenas os itens \nque se relacionam a botanica e plantas.")
+                    Text("To help her finish the potion, select only items that relate to botany and plants.")
                         .font(.custom("Mali Regular", size: 18))
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity, alignment: .topLeading)
                         .padding(30)
                     
-                    Button(action: {
-                        if (leaf && seeds && humus && mushroom && !crystal && !slipper) {
-                            bg = UIImage(named: "pocao2.png")
-                            textPart = 3
-                        }
-                        else{
-                            bg = UIImage(named: "pocao3.png")
-                            textPart = 4
-                        }
-                        
-                        
-                    }, label: {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 13)
-                                .fill(Color(#colorLiteral(red: 0.9490195512771606, green: 0.715137243270874, blue: 0.11372554302215576, alpha: 1)))
-                                .frame(width: 110, height: 30)
-                                .shadow(color: Color(#colorLiteral(red: 0.3294117748737335, green: 0.3294117748737335, blue: 0.3294117748737335, alpha: 0.6899999976158142)), radius: 4, x: 0, y: 3)
+                    if(buttomShow) {
+                        Button(action: {
+                            if (leaf && seeds && humus && mushroom && !crystal && !slipper) {
+                                bg = UIImage(named: "pocao2.png")
+                                textPart = 3
+                                tasks = 1
+                            }
+                            else{
+                                bg = UIImage(named: "pocao3.png")
+                                textPart = 4
+                                tasks = 1
+                            }
                             
-                            Text("make potion")
-                                .font(.custom("Mali SemiBold", size: 15))
-                                .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-                        }
-                    }).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                    .padding(.bottom, 20)
-                    .padding(.trailing, 15)
+                            
+                        }, label: {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 13)
+                                    .fill(Color(#colorLiteral(red: 0.9490195512771606, green: 0.715137243270874, blue: 0.11372554302215576, alpha: 1)))
+                                    .frame(width: 110, height: 30)
+                                    .shadow(color: Color(#colorLiteral(red: 0.3294117748737335, green: 0.3294117748737335, blue: 0.3294117748737335, alpha: 0.6899999976158142)), radius: 4, x: 0, y: 3)
+                                
+                                Text("make potion")
+                                    .font(.custom("Mali SemiBold", size: 15))
+                                    .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                            }
+                        }).frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+                        .padding(.bottom, 20)
+                        .padding(.trailing, 15)
+                    }
                     
                 }
                 if(textPart == 3) {
-                    Text("Yay! Irix está muito feliz de ter conseguido fazer a poção! \nEla agradece muito a sua Ajuda!")
+                    Text("Yay! Irix is very happy for having success on making the potion! She is so grateful for your help!")
                         .font(.custom("Mali Regular", size: 18))
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity, alignment: .topLeading)
                         .padding(30)
@@ -257,7 +274,7 @@ public struct gardenOne: View {
                     
                 }
                 if(textPart == 0) {
-                    Text("Vamos para a próxima atividade")
+                    Text("Let's head to the next lesson!")
                         .font(.custom("Mali Regular", size: 18))
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity, alignment: .topLeading)
                         .padding(30)
@@ -272,7 +289,7 @@ public struct gardenOne: View {
                                 .frame(width: 130, height: 30)
                                 .shadow(color: Color(#colorLiteral(red: 0.3294117748737335, green: 0.3294117748737335, blue: 0.3294117748737335, alpha: 0.6899999976158142)), radius: 4, x: 0, y: 3)
                             
-                            Text("next homework")
+                            Text("next lesson")
                                 .font(.custom("Mali SemiBold", size: 15))
                                 .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                         }
@@ -282,7 +299,7 @@ public struct gardenOne: View {
                     
                 }
                 if(textPart == 4) {
-                    Text("Ops, parece que algo não saiu como o esperado. Mas tudo bem! \nPor sorte os efeitos em humanos são passageiros...")
+                    Text("Oops, it looks like something doesn't happened as expected. But it's ok! Fortunately the effects on humans are temporary.")
                         .font(.custom("Mali Regular", size: 18))
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity, alignment: .topLeading)
                         .padding(30)
@@ -306,7 +323,7 @@ public struct gardenOne: View {
                     
                 }
                 if(textPart == 5) {
-                    Text("e Irix até achou graça do penteado novo :D \nVamos fazer a proxima atividade!")
+                    Text("Irix even found the new hairstyle funny :D \nLet's go to the next lesson!")
                         .font(.custom("Mali Regular", size: 18))
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity, alignment: .topLeading)
                         .padding(30)
@@ -321,7 +338,7 @@ public struct gardenOne: View {
                                     .frame(width: 130, height: 30)
                                     .shadow(color: Color(#colorLiteral(red: 0.3294117748737335, green: 0.3294117748737335, blue: 0.3294117748737335, alpha: 0.6899999976158142)), radius: 4, x: 0, y: 3)
                                 
-                                Text("next homework")
+                                Text("next lesson")
                                     .font(.custom("Mali SemiBold", size: 15))
                                     .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                             }
